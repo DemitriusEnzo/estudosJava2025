@@ -1,0 +1,155 @@
+package ex05;
+
+import static java.lang.Integer.parseInt;
+import static javax.swing.JOptionPane.*;
+import java.util.Random;
+
+public class Util {
+    private final int BMAX = 5;
+    private BilheteUnico[] bilhetes = new BilheteUnico[BMAX];
+    private int index = 0;
+
+    public void menuPrincipal() {
+        try {
+            int opcao = 0;
+            String menu = "1. Administrador\n2. Usuário\n3. Finalizar";
+
+            while(opcao != 3) {
+                opcao = parseInt(showInputDialog(menu));
+                if (opcao < 1 || opcao > 3) {
+                    showMessageDialog(null, "Opção incorreta.");
+                    break;
+                }
+
+                switch (opcao) {
+                    case 1:
+                        menuAdministrador();
+                        break;
+                }
+            }
+        } catch (NumberFormatException e) {
+            showMessageDialog(null, "Entrada inválida.");
+            this.menuPrincipal();
+        }
+
+    }
+
+    private void menuAdministrador() {
+        try {
+            int opcaoAdm = 0;
+            String administrador = "1. Emitir bilhete\n2. Listar bilhetes\n3. Remover Bilhete\n4.Sair";
+
+            while(opcaoAdm != 4) {
+                opcaoAdm = parseInt(showInputDialog(administrador));
+                if (opcaoAdm > 4 || opcaoAdm < 1) {
+                    showMessageDialog(null, "Opção incorreta.");
+                    break;
+                }
+
+                switch (opcaoAdm) {
+                    case 1:
+                        emitirBilhete();
+                        break;
+                    case 2:
+                        listaBilhetes();
+                        break;
+                    case 3:
+                        removerBilhete();
+                        break;
+                }
+            }
+        } catch (NumberFormatException e) {
+            showMessageDialog(null, "Entrada inválida.");
+            menuAdministrador();
+        }
+
+    }
+
+    private void removerBilhete() {
+        try {
+            String nomeUsuario = showInputDialog("Insira o nome do usuario");
+
+            for(int i = 0; i < bilhetes.length; ++i) {
+                if (bilhetes[i].getUsuario().getNome().equalsIgnoreCase(nomeUsuario)) {
+                    bilhetes[i] = null;
+                    break;
+                }
+            }
+
+            for(int i = 0; i < this.bilhetes.length - 1; ++i) {
+                if (bilhetes[i] == null) {
+                    bilhetes[i] = bilhetes[i + 1];
+                    bilhetes[i + 1] = null;
+                }
+            }
+
+            index++;
+            showMessageDialog(null, "Bilhete removido com sucesso.");
+        } catch (NullPointerException e) {
+            showMessageDialog(null, "Usuário não encontrado.");
+        }
+
+    }
+
+    private void armazenaBilhete(BilheteUnico bilheteUnico) {
+        if (bilheteUnico != null) {
+            bilhetes[index] = bilheteUnico;
+            index++;
+        } else {
+            showMessageDialog(null, "Erro ao emitir bilhete.");
+        }
+
+    }
+
+    private void emitirBilhete() {
+        if (index != (BMAX-1)) {
+            String nome = showInputDialog("Nome usuario.");
+            String cpf = showInputDialog("cpf usuario");
+            Usuario usuario = new Usuario(nome, cpf);
+            armazenaBilhete(gerarBilhete(usuario));
+        } else {
+            showMessageDialog(null, "Limite de bilhetes atingido.");
+        }
+
+    }
+
+    private BilheteUnico gerarBilhete(Usuario usuario) {
+        String tipoTarifaInput = showInputDialog(null, "Qual o tipo da tarifa?");
+        TipoTarifa tipoTarifa = null;
+        boolean encontrado = false;
+
+        for(TipoTarifa t : TipoTarifa.values()) {
+            if (t.name().equalsIgnoreCase(tipoTarifaInput)) {
+                tipoTarifa = t;
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (encontrado) {
+            int nBilhete = (new Random()).nextInt(0, 100);
+            Tarifa tarifa = new Tarifa(5, tipoTarifa);
+            BilheteUnico bilheteUnico = new BilheteUnico(usuario, tarifa, nBilhete);
+            showMessageDialog(null, "Bilhete único emitido.");
+            return bilheteUnico;
+        }
+
+        return null;
+    }
+
+    private void listaBilhetes() {
+        if (bilhetes[0] != null) {
+            StringBuilder bilhetesImpressos = new StringBuilder();
+
+            for(BilheteUnico bilhete : bilhetes) {
+                if (bilhete != null) {
+                    bilhetesImpressos.append(bilhete).append("\n");
+                }
+            }
+
+            showMessageDialog(null, bilhetesImpressos.toString());
+        } else {
+            showMessageDialog(null, "Nenhum bilhete gerado até o momento.");
+        }
+    }
+}
