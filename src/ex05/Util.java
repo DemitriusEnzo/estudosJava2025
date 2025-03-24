@@ -25,6 +25,9 @@ public class Util {
                     case 1:
                         menuAdministrador();
                         break;
+                    case 2:
+                        menuUsuario();
+                        break;
                 }
             }
         } catch (NumberFormatException e) {
@@ -32,6 +35,55 @@ public class Util {
             this.menuPrincipal();
         }
 
+    }
+
+    private BilheteUnico encontraUsuario() {
+        String nomeUsuario = showInputDialog(null, "Insira o nome do usuário.");
+
+        for (BilheteUnico bilhete : bilhetes) {
+            if (bilhete.getUsuario().getNome().equalsIgnoreCase(nomeUsuario)) {
+                return bilhete;
+            }
+        }
+        return null;
+    }
+
+    private void menuUsuario() {
+        try {
+            int opcaoUsuario = 0;
+            String usuario = "1. Consultar Saldo\n2. Carregar Bilhete\n3. Passar Catraca\n4.Sair";
+
+            while(opcaoUsuario != 4) {
+                opcaoUsuario = parseInt(showInputDialog(usuario));
+                if (opcaoUsuario > 4 || opcaoUsuario < 1) {
+                    showMessageDialog(null, "Opção incorreta.");
+                    break;
+                }
+
+                if(opcaoUsuario == 4) {
+                    break;
+                }
+                BilheteUnico bilhete = encontraUsuario();
+                if(bilhete != null) {
+                    switch (opcaoUsuario) {
+                        case 1:
+                            bilhete.consultarSaldo();
+                            break;
+                        case 2:
+                            bilhete.carregarBilhete();
+                            break;
+                        case 3:
+                            bilhete.passarCatraca();
+                            break;
+                    }
+                } else {
+                    showMessageDialog(null, "Usuário não encontrado.");
+                }
+            }
+        } catch (NumberFormatException e) {
+            showMessageDialog(null, "Entrada inválida.");
+            menuAdministrador();
+        }
     }
 
     private void menuAdministrador() {
@@ -62,15 +114,14 @@ public class Util {
             showMessageDialog(null, "Entrada inválida.");
             menuAdministrador();
         }
-
     }
 
     private void removerBilhete() {
         try {
-            String nomeUsuario = showInputDialog("Insira o nome do usuario");
+            BilheteUnico bilheteUsuario = encontraUsuario();
 
             for(int i = 0; i < bilhetes.length; ++i) {
-                if (bilhetes[i].getUsuario().getNome().equalsIgnoreCase(nomeUsuario)) {
+                if (bilhetes[i] == bilheteUsuario) {
                     bilhetes[i] = null;
                     break;
                 }

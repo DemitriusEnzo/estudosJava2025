@@ -1,4 +1,6 @@
 package ex05;
+import static javax.swing.JOptionPane.*;
+import static java.lang.Double.parseDouble;
 
 public class BilheteUnico {
     private Usuario usuario;
@@ -12,6 +14,10 @@ public class BilheteUnico {
         this.nBilhete = nBilhete;
     }
 
+    public void consultarSaldo() {
+        showMessageDialog(null, "Saldo atual: " + this.saldo);
+    }
+
     public void passarCatraca() {
         double tarifaComDesconto = this.tarifa.getTipoTarifa().calcularTarifaComDesconto(this.tarifa.getTarifaBase());
         if (this.saldo >= tarifaComDesconto) {
@@ -23,7 +29,8 @@ public class BilheteUnico {
 
     }
 
-    public void carregarBilhete(double valor) {
+    public void carregarBilhete() {
+        double valor = parseDouble(showInputDialog(null, "Insira o valor de recarga."));
         if (valor > 0) {
             this.saldo += valor;
             System.out.println("Bilhete carregado com sucesso! Novo saldo: " + this.saldo);
