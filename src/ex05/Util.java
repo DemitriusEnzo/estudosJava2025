@@ -50,10 +50,10 @@ public class Util {
 
     private void menuUsuario() {
         try {
-            int opcaoUsuario = 0;
+            int opcaoUsuario;
             String usuario = "1. Consultar Saldo\n2. Carregar Bilhete\n3. Passar Catraca\n4.Sair";
 
-            while(opcaoUsuario != 4) {
+            while(true) {
                 opcaoUsuario = parseInt(showInputDialog(usuario));
                 if (opcaoUsuario > 4 || opcaoUsuario < 1) {
                     showMessageDialog(null, "Opção incorreta.");
@@ -63,6 +63,7 @@ public class Util {
                 if(opcaoUsuario == 4) {
                     break;
                 }
+
                 BilheteUnico bilhete = encontraUsuario();
                 if(bilhete != null) {
                     switch (opcaoUsuario) {
