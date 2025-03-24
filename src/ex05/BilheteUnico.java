@@ -44,32 +44,8 @@ public class BilheteUnico {
         return this.usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public Tarifa getTarifa() {
         return this.tarifa;
-    }
-
-    public void setTarifa(Tarifa tarifa) {
-        this.tarifa = tarifa;
-    }
-
-    public int getnBilhete() {
-        return this.nBilhete;
-    }
-
-    public void setnBilhete(int nBilhete) {
-        this.nBilhete = nBilhete;
-    }
-
-    public double getSaldo() {
-        return this.saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
     }
 
     @Override

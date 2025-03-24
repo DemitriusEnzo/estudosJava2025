@@ -1,6 +1,7 @@
 package ex05;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.Double.parseDouble;
 import static javax.swing.JOptionPane.*;
 import java.util.Random;
 
@@ -90,11 +91,11 @@ public class Util {
     private void menuAdministrador() {
         try {
             int opcaoAdm = 0;
-            String administrador = "1. Emitir bilhete\n2. Listar bilhetes\n3. Remover Bilhete\n4.Sair";
+            String administrador = "1. Emitir bilhete\n2. Listar bilhetes\n3. Remover Bilhete\n4.Aumentar Tarifa\n5.Sair";
 
-            while(opcaoAdm != 4) {
+            while(opcaoAdm != 5) {
                 opcaoAdm = parseInt(showInputDialog(administrador));
-                if (opcaoAdm > 4 || opcaoAdm < 1) {
+                if (opcaoAdm > 5 || opcaoAdm < 1) {
                     showMessageDialog(null, "Opção incorreta.");
                     break;
                 }
@@ -109,11 +110,21 @@ public class Util {
                     case 3:
                         removerBilhete();
                         break;
+                    case 4:
+                        aumentarTarifa();
+                        break;
                 }
             }
         } catch (NumberFormatException e) {
             showMessageDialog(null, "Entrada inválida.");
             menuAdministrador();
+        }
+    }
+
+    private void aumentarTarifa() {
+        double aumento = parseDouble(showInputDialog(null, "Insira o valor de aumento."));
+        for(BilheteUnico bilhete : bilhetes) {
+            bilhete.getTarifa().aumentarTarifa(aumento);
         }
     }
 

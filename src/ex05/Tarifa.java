@@ -22,16 +22,8 @@ public class Tarifa {
         return this.tarifaBase;
     }
 
-    public void setTarifaBase(double tarifaBase) {
-        this.tarifaBase = tarifaBase;
-    }
-
     public TipoTarifa getTipoTarifa() {
         return this.tipoTarifa;
-    }
-
-    public void setTipoTarifa(TipoTarifa tipoTarifa) {
-        this.tipoTarifa = tipoTarifa;
     }
 
     @Override
