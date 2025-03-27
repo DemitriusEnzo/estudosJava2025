@@ -42,7 +42,7 @@ public class Util {
         String nomeUsuario = showInputDialog(null, "Insira o nome do usuário.");
 
         for (BilheteUnico bilhete : bilhetes) {
-            if (bilhete.getUsuario().getNome().equalsIgnoreCase(nomeUsuario)) {
+            if (bilhete != null && bilhete.getUsuario().getNome().equalsIgnoreCase(nomeUsuario)) {
                 return bilhete;
             }
         }
@@ -131,23 +131,25 @@ public class Util {
     private void removerBilhete() {
         try {
             BilheteUnico bilheteUsuario = encontraUsuario();
-
-            for(int i = 0; i < bilhetes.length; ++i) {
-                if (bilhetes[i] == bilheteUsuario) {
-                    bilhetes[i] = null;
-                    break;
+            int resposta = showConfirmDialog(null, "Tem certeza que deseja remover?");
+            if(resposta == YES_OPTION) {
+                for(int i = 0; i < bilhetes.length; ++i) {
+                    if (bilhetes[i] == bilheteUsuario) {
+                        bilhetes[i] = null;
+                        break;
+                    }
                 }
-            }
 
-            for(int i = 0; i < this.bilhetes.length - 1; ++i) {
-                if (bilhetes[i] == null) {
-                    bilhetes[i] = bilhetes[i + 1];
-                    bilhetes[i + 1] = null;
+                for(int i = 0; i < this.bilhetes.length - 1; ++i) {
+                    if (bilhetes[i] == null) {
+                        bilhetes[i] = bilhetes[i + 1];
+                        bilhetes[i + 1] = null;
+                    }
                 }
-            }
 
-            index++;
-            showMessageDialog(null, "Bilhete removido com sucesso.");
+                index++;
+                showMessageDialog(null, "Bilhete removido com sucesso.");
+            }
         } catch (NullPointerException e) {
             showMessageDialog(null, "Usuário não encontrado.");
         }

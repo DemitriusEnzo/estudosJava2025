@@ -28,9 +28,7 @@ public class Tarifa {
 
     @Override
     public String toString() {
-        return "Tarifa{" +
-                "tarifaBase=" + tarifaBase +
-                ", tipoTarifa=" + tipoTarifa +
-                '}';
+        return "tarifaBase: " + tarifaBase +
+                ", tipoTarifa: " + tipoTarifa;
     }
 }

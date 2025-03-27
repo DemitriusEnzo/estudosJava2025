@@ -50,11 +50,11 @@ public class BilheteUnico {
 
     @Override
     public String toString() {
-        return "BilheteUnico{" +
-                "usuario=" + usuario +
-                ", tarifa=" + tarifa +
-                ", nBilhete=" + nBilhete +
-                ", saldo=" + saldo +
-                '}';
+        return "BilheteUnico: " +
+                "\n\t" + usuario +
+                ", \ntarifa: " + tarifa +
+                ", \nnBilhete: " + nBilhete +
+                ", \nsaldo: " + saldo +
+                "\n";
     }
 }
