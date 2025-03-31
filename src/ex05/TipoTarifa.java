@@ -1,17 +1,24 @@
 package ex05;
 
 public enum TipoTarifa {
-    ESTUDANTE(0.5),
-    PROFESSOR(0.5),
-    NORMAL(1.0);
+    ESTUDANTE {
+        @Override
+        public double calcularTarifaComDesconto(double tarifaBase) {
+            return tarifaBase * 0.5;
+        }
+    },
+    PROFESSOR {
+        @Override
+        public double calcularTarifaComDesconto(double tarifaBase) {
+            return tarifaBase * 0.5;
+        }
+    },
+    NORMAL {
+        @Override
+        public double calcularTarifaComDesconto(double tarifaBase) {
+            return tarifaBase;
+        }
+    };
 
-    private final double desconto;
-
-    TipoTarifa(double desconto) {
-        this.desconto = desconto;
-    }
-
-    public double calcularTarifaComDesconto(double tarifaBase) {
-        return tarifaBase * this.desconto;
-    }
+    public abstract double calcularTarifaComDesconto(double tarifaBase);
 }
