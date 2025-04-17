@@ -20,7 +20,7 @@ public class Controle {
     }
 
     public Empregado pesquisarEmpregado(long matricula) {
-        return Arrays.stream(empregados).filter(e -> e.getMatricula() == matricula).findFirst().orElse(null);
+        return Arrays.stream(empregados).filter(e -> e != null && e.getMatricula() == matricula).findFirst().orElse(null);
     }
 
     public String listarEmpregados() {
