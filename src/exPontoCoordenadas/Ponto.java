@@ -1,4 +1,4 @@
-package ex03;
+package exPontoCoordenadas;
 
 public class Ponto {
     int x;

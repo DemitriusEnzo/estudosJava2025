@@ -1,4 +1,4 @@
-package ex07;
+package exEmpregados;
 
 public abstract class Empregado {
     protected long matricula;

@@ -1,4 +1,4 @@
-package ex04;
+package exFuncionario;
 
 public class Main {
     public static void main(String[] args) {

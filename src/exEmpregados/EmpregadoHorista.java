@@ -1,4 +1,4 @@
-package ex07;
+package exEmpregados;
 
 public class EmpregadoHorista extends Empregado {
     private int totalHoras;

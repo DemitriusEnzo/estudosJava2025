@@ -1,4 +1,4 @@
-package ex07;
+package exEmpregados;
 
 public class EmpregadoComissionado extends Empregado {
     private int totalVendas;

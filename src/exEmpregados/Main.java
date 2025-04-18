@@ -1,4 +1,4 @@
-package ex07;
+package exEmpregados;
 
 public class Main {
     public static void main(String[] args) {

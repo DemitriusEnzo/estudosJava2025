@@ -1,4 +1,4 @@
-package ex05;
+package exBilheteUnico;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ex05;
+package exBilheteUnico;
 import static javax.swing.JOptionPane.*;
 import static java.lang.Double.parseDouble;
 

@@ -1,4 +1,4 @@
-package ex01;
+package exJogador;
 
 import java.util.Arrays;
 

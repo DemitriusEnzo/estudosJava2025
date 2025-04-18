@@ -1,4 +1,4 @@
-package ex05;
+package exBilheteUnico;
 
 public enum TipoTarifa {
     ESTUDANTE {

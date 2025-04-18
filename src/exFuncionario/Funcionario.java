@@ -1,4 +1,4 @@
-package ex04;
+package exFuncionario;
 
 public class Funcionario {
     private final String nome;

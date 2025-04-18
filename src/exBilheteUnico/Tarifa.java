@@ -1,4 +1,4 @@
-package ex05;
+package exBilheteUnico;
 
 public class Tarifa {
     private double tarifaBase;

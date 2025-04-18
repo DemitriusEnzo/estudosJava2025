@@ -1,4 +1,4 @@
-package ex05;
+package exBilheteUnico;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Double.parseDouble;

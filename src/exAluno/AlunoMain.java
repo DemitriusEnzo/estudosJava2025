@@ -1,4 +1,4 @@
-package ex02;
+package exAluno;
 
 import java.util.Scanner;
 

@@ -1,6 +1,8 @@
-package ex07;
+package exEmpregados;
 
 import java.util.Arrays;
+
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Controle {
     private Empregado[] empregados = new Empregado[4];
@@ -11,12 +13,12 @@ public class Controle {
             if (empregados[i] == null) {
                 empregados[i] = empregado;
                 inserido = true;
-                System.out.println("Empregado inserido.");
+                showMessageDialog(null, "Empregado inserido.");
                 break;
             }
         }
         if (!inserido)
-            System.out.println("Lista de empregados cheia.");
+            showMessageDialog(null, "Lista de empregados cheia.");
     }
 
     public Empregado pesquisarEmpregado(long matricula) {
@@ -25,7 +27,7 @@ public class Controle {
 
     public String listarEmpregados() {
         StringBuilder aux = new StringBuilder();
-        Arrays.stream(empregados).filter(e -> e != null).forEach(e -> aux.append(e + "\n"));
+        Arrays.stream(empregados).filter(e -> e != null).forEach(e -> aux.append(e + "\n--------------\n"));
         return aux.toString();
     }
 }

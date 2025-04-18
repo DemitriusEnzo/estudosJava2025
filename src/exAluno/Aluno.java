@@ -1,4 +1,4 @@
-package ex02;
+package exAluno;
 
 public class Aluno {
     private int rm;
