@@ -1,3 +1,4 @@
-.idea/* linguist-vendored
-.metadata/* linguist-vendored
 *.java linguist-language=Java
+*.js linguist-detectable=false
+*.html linguist-detectable=false
+*.xml linguist-detectable=false
