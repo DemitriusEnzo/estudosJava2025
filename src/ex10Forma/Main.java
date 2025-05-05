@@ -1,4 +1,4 @@
-package ex10Circulo;
+package ex10Forma;
 
 import java.util.ArrayList;
 
@@ -15,8 +15,8 @@ public class Main {
             System.out.println(f.getClass());
             System.out.println(f);
             System.out.println("area: " + f.calcularArea());
-            if(f instanceof  Cilindro) {
-                System.out.println("volume: " + ((Cilindro) f).calcularVolume());
+            if(f instanceof  Volume) {
+                System.out.println("volume: " + ((Volume) f).calcularVolume());
             }
             System.out.println("------------------------");
         }

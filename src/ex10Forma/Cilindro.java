@@ -1,6 +1,6 @@
-package ex10Circulo;
+package ex10Forma;
 
-public class Cilindro extends Forma {
+public class Cilindro extends Forma implements Volume {
     private double altura;
 
     public Cilindro(int x, int y, double raio, double altura) {

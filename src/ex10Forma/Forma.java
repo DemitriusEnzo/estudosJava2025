@@ -1,4 +1,4 @@
-package ex10Circulo;
+package ex10Forma;
 
 public abstract class Forma {
     protected int x;

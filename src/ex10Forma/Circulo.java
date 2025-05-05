@@ -1,4 +1,4 @@
-package ex10Circulo;
+package ex10Forma;
 
 public class Circulo extends Forma {
 
