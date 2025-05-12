@@ -11,11 +11,11 @@ public class Util {
     private int index = 0;
 
     public void menuPrincipal() {
-        try {
-            int opcao = 0;
-            String menu = "1. Administrador\n2. Usuário\n3. Finalizar";
+        int opcao = 0;
+        String menu = "1. Administrador\n2. Usuário\n3. Finalizar";
 
-            while(opcao != 3) {
+        while(opcao != 3) {
+            try {
                 opcao = parseInt(showInputDialog(menu));
                 if (opcao < 1 || opcao > 3) {
                     showMessageDialog(null, "Opção incorreta.");
@@ -30,12 +30,12 @@ public class Util {
                         menuUsuario();
                         break;
                 }
-            }
-        } catch (NumberFormatException e) {
-            showMessageDialog(null, "Entrada inválida.");
-            this.menuPrincipal();
-        }
+            } catch (NumberFormatException e) {
+                showMessageDialog(null, "Entrada inválida.");
+                this.menuPrincipal();
 
+            }
+        }
     }
 
     private BilheteUnico encontraUsuario() {
