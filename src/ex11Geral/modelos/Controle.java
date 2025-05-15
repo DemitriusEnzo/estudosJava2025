@@ -18,7 +18,7 @@ public class Controle {
         listaCliente.add(new Cliente(321, "Roberto Carlos"));
         listaCliente.add(new Cliente(789, "Xuxa Maria"));
 
-        listaProduto.add(new Produto(1, "camiseta", 390, 100));
+        listaProduto.add(new Produto(1, "camiseta", 500, 100));
         listaProduto.add(new Produto(2, "calça", 1500, 1000));
         listaProduto.add(new Produto(3, "boné", 200, 500));
     }
@@ -39,6 +39,7 @@ public class Controle {
 
                 switch (opcao) {
                     case 1 -> comprar();
+                    case 3 -> removerProduto();
                     case 4 -> fecharCompra();
                 }
 
@@ -46,6 +47,12 @@ public class Controle {
                 showMessageDialog(null, e.getMessage());
             }
         }
+    }
+
+    private void removerProduto() {
+        String nome = showInputDialog("Insira o nome do produto a ser removido.");
+        Produto produto = new Produto(nome);
+        nf.removerItemProduto(produto);
     }
 
     private void fecharCompra() {
