@@ -1,4 +1,4 @@
-package ex13Exception;
+package ex14Exception;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ public class Sensor {
     }
 
     public void registrarLeitura(List<Double> leitura) throws LeituraInvalidaException {
-        if(leituras.size() != 100) {
+        if(leitura.size() != 100) {
             throw new IllegalArgumentException("O total de leituras deve ser 100!");
         }
 
-        for (int i = 0; i < leituras.size(); i++) {
-            double temp = leituras.get(i);
+        for (int i = 0; i < leitura.size(); i++) {
+            double temp = leitura.get(i);
             if(temp < -60 || temp > 60) {
                 throw new LeituraInvalidaException(i, temp);
             }

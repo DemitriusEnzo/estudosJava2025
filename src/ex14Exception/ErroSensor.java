@@ -1,4 +1,4 @@
-package ex13Exception;
+package ex14Exception;
 
 public class ErroSensor {
     String idSensor;
